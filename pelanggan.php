@@ -209,7 +209,7 @@ $h2 = mysqli_num_rows($h1);
                                             <!-- Modal body -->
                                             <div class="modal-body">
                                                 Apakah  Anda yakin ingin menghapus barang ini?
-                                                <input type="hidden" name="idp" value="<?=$idpl;?>">
+                                                <input type="hidden" name="idpl" value="<?=$idpl;?>">
                                             </div>
 
                                             <!-- Modal footer -->

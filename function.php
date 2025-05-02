@@ -212,7 +212,7 @@ if (isset($_POST['editbarang'])){
 
 //Hapus Barang
 if (isset($_POST['hapusbarang'])){
-    $idp = $_POST['$idp'];
+    $idp = $_POST['idp'];
 
     $query = mysqli_query($koneksi, "DELETE from produk where idproduk='$idp'");
 
@@ -249,7 +249,7 @@ if (isset($_POST['editpelanggan'])){
 
 //Hapus Pelanggan
 if (isset($_POST['hapuspelanggan'])){
-    $idpl = $_POST['$idpl'];
+    $idpl = $_POST['idpl'];
 
     $query = mysqli_query($koneksi, "DELETE from pelanggan where idpelanggan='$idpl'");
 
@@ -321,8 +321,8 @@ if (isset($_POST['editmasuk'])){
 
 //Hapus Barang Masuk
 if (isset($_POST['hapusmasuk'])){
-    $idp = $_POST['$idp'];
-    $idm = $_POST['$idm'];
+    $idp = $_POST['idp'];
+    $idm = $_POST['idm'];
 
     //cari tau qty sekarang
     $caritahu = mysqli_query($koneksi," SELECT * From masuk where idmasuk='$idm'");
@@ -353,13 +353,13 @@ if (isset($_POST['hapusmasuk'])){
 
 //Hapus Order
 if (isset($_POST['hapusorder'])){
-    $ido = $_POST['$ido'];
+    $ido = $_POST['ido'];
 
     $cekdata = mysqli_query($koneksi, "SELECT * From detail dp where idpesanan='$ido'");
 
     while($ok=mysqli_fetch_array($cekdata)){
         //balikin stock
-        $qty = $ok['$qty'];
+        $qty = $ok['qty'];
         $idproduk = $ok['idproduk'];
         $iddp = $ok['iddetail'];
 
