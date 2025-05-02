@@ -140,6 +140,7 @@ $h2 = mysqli_num_rows($h1);
                                     $namapelanggan = $p['namapelanggan'];
                                     $notelp = $p['notelp'];
                                     $alamat = $p['alamat'];
+                                    $idpl  = $p['idpelanggan'];
 
                                     ?>
                                         <tr>
@@ -147,8 +148,81 @@ $h2 = mysqli_num_rows($h1);
                                             <td><?=$namapelanggan;?></td>
                                             <td><?=$notelp;?></td>
                                             <td><?=$alamat;?></td>
-                                            <td>Edit Delete</td>
+                                            <td>
+                                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idpl;?>">
+                                                    Edit
+                                                </button>
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idpl;?>">
+                                                    Delete
+                                                </button>                            
+                                            </td>
                                         </tr>
+
+                                    
+                                        <!--Modal Edit-->
+                                        <div class="modal fade" id="edit<?=$idpl;?>">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Ubah Data Pelanggan</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+
+                                            <form method="post">
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                <input type="text" name="namapelanggan" class="form-control" placeholder="Nama Pelanggan" value="<?=$namapelanggan;?>">
+                                                <input type="text" name="notelp" class="form-control mt-2" placeholder="Nomor Telepon" value="<?=$notelp;?>">
+                                                <input type="num" name="alamat" class="form-control mt-2" placeholder="Alamat" value="<?=$alamat;?>">
+                                                <input type="hidden" name="idpl" value="<?=$idpl;?>">
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-success" name="editpelanggan">Submit</button>
+                                            </div>
+
+                                            </form>
+
+                                            </div>
+                                        </div>
+                                        </div>
+
+                                        
+                                        <!--Modal Delete-->
+                                        <div class="modal fade" id="delete<?=$idpl;?>">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Hapus <?=$namapelanggan;?></h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+
+                                            <form method="post">
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                Apakah  Anda yakin ingin menghapus barang ini?
+                                                <input type="hidden" name="idp" value="<?=$idpl;?>">
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-success" name="hapuspelanggan">Submit</button>
+                                            </div>
+
+                                            </form>
+
+                                            </div>
+                                        </div>
+                                        </div>
 
                                     <?php
                                     }; //end of while

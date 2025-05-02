@@ -161,21 +161,60 @@ if(isset($_GET['idp'])){
                                     $qty = $p['qty'];
                                     $harga = $p['harga'];
                                     $namaproduk = $p['namaproduk'];
+                                    $desc = $p['deskripsi'];
                                     $subtotal = $qty*$harga;
 
                                     ?>
                                         <tr>
                                             <td><?=$i++;?></td>
-                                            <td><?=$namaproduk;?></td>
+                                            <td><?=$namaproduk;?> - <?=$desc;?></td>
                                             <td>Rp<?=number_format($harga);?></td>
                                             <td><?=number_format($qty);?></td>
                                             <td>Rp<?=number_format($subtotal);?></td>
-                                            <td>Edit
-                                            <button type="button" class="btn btn-danger mb-4" data-bs-toggle="modal" data-bs-target="#delete<?=$idpr;?>">
+                                            <td>
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<?=$idpr;?>">
+                                                    Edit
+                                            </button>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idpr;?>">
                                                 Hapus
                                             </button>
                                             </td>
                                         </tr>
+
+                                        
+                                        <!--Modal Edit-->
+                                        <div class="modal fade" id="edit<?=$idpr;?>">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Ubah Data Detail Pesanan</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+
+                                            <form method="post">
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                <input type="text" name="namaproduk" class="form-control" placeholder="Nama Produk" value="<?=$namaproduk;?> - <?=$desc;?>" disabled>
+                                                <input type="number" name="qty" class="form-control mt-2" placeholder="qty" value="<?=$qty;?>">
+                                                <input type="hidden" name="iddp" value="<?=$iddp;?>">
+                                                <input type="hidden" name="idp" value="<?=$idp;?>">
+                                                <input type="hidden" name="idpr" value="<?=$idpr;?>">
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-success" name="editdetail">Submit</button>
+                                            </div>
+
+                                            </form>
+
+                                            </div>
+                                        </div>
+                                        </div>
 
                                         <!-- Modal -->
                                         <div class="modal fade" id="delete<?=$idpr;?>">
@@ -185,7 +224,7 @@ if(isset($_GET['idp'])){
                                             <!-- Modal Header -->
                                             <div class="modal-header">
                                                 <h4 class="modal-title">Apakah Anda yakin ingin menghapus barang ini?</h4>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal">&times;></time></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
                                             </div>
 
                                             <form method="post">

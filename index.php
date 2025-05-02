@@ -166,8 +166,43 @@ $h2 = mysqli_num_rows($h1);
                                             <td><?=$tanggal;?></td>
                                             <td><?=$namapelanggan;?> - <?=$alamat;?></td>
                                             <td><?=$jumlah;?></td>
-                                            <td><a href="view.php?idp=<?=$idorder;?>" class="btn btn-primary" target="_blank">Tampilkan</a> Delete</td>
+                                            <td><a href="view.php?idp=<?=$idorder;?>" class="btn btn-primary" target="_blank">Tampilkan</a> 
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<?=$idorder;?>">
+                                                    Delete
+                                                </button> 
+                                            </td>
                                         </tr>
+
+                                        <!--Modal Delete-->
+                                        <div class="modal fade" id="delete<?=$idorder;?>">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Hapus Data Pesanan <?=$namapelanggan?></h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+
+                                            <form method="post">
+
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                                Apakah  Anda yakin ingin menghapus pesanan ini?
+                                                <input type="hidden" name="ido" value="<?=$idorder;?>">
+                                            </div>
+
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-success" name="hapusorder">Submit</button>
+                                            </div>
+
+                                            </form>
+
+                                            </div>
+                                        </div>
+                                        </div>
 
                                     <?php
                                     }; //end of while
